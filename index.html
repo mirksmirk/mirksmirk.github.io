@@ -1,0 +1,124 @@
+<!-- aframe documentation: https://aframe.io/docs/1.0.0/introduction/ -->
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>aframe empty template</title>
+	<script src="./libraries/aframe-1.0.4.min.js"></script>
+	<script src="./libraries/aframe_ply_pointcloud_loader.js"></script>
+</head>
+
+<body>
+		<a-scene vr-mode-ui="enabled: false"
+						 loading-screen="enabled: false">
+
+			<!-- pre-load your assets(models, videos, images etc.) here -->
+			<a-assets>
+				<a-asset-item id="rock-glb" src="./models/rock-mesh.glb" response-type="arraybuffer"></a-asset-item>
+				<a-asset-item id="chair-glb" position="7.2682 0.09033 -7.48658" src="./models/chair-4-centered.glb" response-type="arraybuffer"></a-asset-item>
+				<a-asset-item id="rock-ply" src="./models/rock-pointcloud.ply" response-type="arraybuffer"></a-asset-item>
+    		<video id="rocks-mp4" muted autoplay loop="true" src="./video/rocks.mp4"></video>
+			</a-assets>
+
+			<!-- Scene camera -->
+			<a-entity camera look-controls position="0 1.6 0" wasd-controls="acceleration:400"></a-entity>
+
+			<!-- Box primitive -->
+			<a-box id="cube"
+						 color="olive"
+						 depth="2"
+						 height="2"
+						 width="2"
+						 position="0 0.5 -6"
+						 rotation="0 0 0"
+						 animation="property: rotation; to: 0, 360, 0; dur: 5000; easing: linear; loop: true">
+			</a-box>
+
+			<!-- Text entity -->
+			<a-entity id="text" rotation="50 0 50" position="6 2 -6"
+								text="width: 6;
+											color: white;
+											value: A rock is any naturally occurring solid mass or aggregate of minerals or mineraloid matter. It is categorized by the minerals included, its chemical composition and the way in which it is formed. Rocks are usually grouped into three main groups: igneous rocks, metamorphic rocks and sedimentary rocks. Rocks form the Earth's outer solid layer, the crust. ">
+			</a-entity>
+
+			<a-text id="font" position="5 20 -50"
+						 	width="100"
+							font="./AGSchoolbook-RegularA-msdf.json"
+							font-image="./AGSchoolbook-RegularA-msdf.png"
+							negate="false"
+							color="black"
+							value="AQuickBrownFoxJumpedOverTheLazyDog">
+			</a-text>
+
+			<!-- <a-torus-knot
+			color="#B84A39"
+			arc="180"
+			p="2"
+			q="7"
+			radius="5"
+			radius-tubular="0.1">
+		</a-torus-knot> -->
+
+
+			<!-- Video primitive -->
+  		<a-video id="video-slide" src="#rocks-mp4"
+							 width="8"
+							 height="4.5"
+							 position="14 2.82917 -13.90659">
+			</a-video>
+
+			<!-- PLY point cloud entity -->
+			<a-entity id="point-cloud" ply-pointcloud-model="src: #rock-ply;
+																			pointSize: 0.03"
+								position="18.71916 9.21249 -14.97166"
+								rotation="0 0 -5"
+								scale="0.75 0.75 0.75">
+			</a-entity>
+
+			<!-- GLB mesh entity -->
+			<a-entity gltf-model="#rock-glb"
+								position="42 0 -6"
+								scale="0.75 0.75 0.75">
+			</a-entity>
+
+			<!-- GLB chair entity -->
+			<a-entity id="chair" gltf-model="#chair-glb"
+								position="13.17656 -0.13941 -7.85816"
+								scale "0.75 0.75 0.75"
+								animation="property: rotation; to: 0, 360, 0; dur: 5000; easing: linear; loop: true">
+			</a-entity>
+
+			<a-light
+								color="white"
+								intensity="10"
+								position="10 10 10">
+		</a-light>
+
+		<a-sky color="blue"></a-sky>
+
+			<!-- <a-sphere
+								position="0 1.25 -5"
+								radius="1.25"
+								color="#EF2D5E">
+			</a-sphere>
+      <a-cylinder
+								position="1 0.75 -3"
+								radius="0.5"
+								height="1.5"
+								color="#FFC65D">
+			</a-cylinder>
+      <a-plane
+								position="0 0 -4"
+								rotation="-90 0 0"
+								width="4"
+								height="4"
+								>
+							</a-plane>
+      <a-sky color="#ECECEC"></a-sky> -->
+
+		</a-scene>
+</body>
+</html>
